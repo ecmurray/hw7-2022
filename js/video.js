@@ -1,3 +1,5 @@
+
+
 var video = document.getElementById("player1");
 var playBtn = document.getElementById("play");
 var pauseBtn = document.getElementById("pause");
@@ -7,6 +9,8 @@ var skipBtn = document.getElementById("skip");
 var muteBtn = document.getElementById("mute");
 var slider = document.getElementById("slider");
 var volume = document.getElementById("volume");
+var vintage = document.getElementById("vintage");
+var orig = document.getElementById("orig");
 
 
 if (video) {
@@ -22,9 +26,9 @@ if (video) {
 		playBtn.addEventListener("click", function() {
 			console.log("Play!");
 			video.play();
-			volume.innerHTML = slider.value;
+			volume.innerHTML = slider.value + "%";
 		});
-	}; // play
+	} // play
 	
 	// Pause video
 	if (pauseBtn) {
@@ -32,7 +36,7 @@ if (video) {
 			console.log("Pause!");
 			video.pause();
 		});
-	}; // pause 
+	} // pause 
 	
 	// Slow video by 10% and log new speed
 	if (slowerBtn) {
@@ -43,7 +47,7 @@ if (video) {
 			video.playbackRate = newPlaybackRate;
 			console.log("New playback rate is: " + video.playbackRate);
 		});
-	}; // slower
+	} // slower
 	
 	// Accelerate video by 10% and log new speed
 	if (fasterBtn) {
@@ -54,22 +58,19 @@ if (video) {
 			video.playbackRate = newPlaybackRate;
 			console.log("New playback rate is: " + video.playbackRate);
 		});
-	}; // faster
+	} // faster
 	
 	// Skip ahead 10 seconds. If at end of video, set back to beginning
 	if (skipBtn) {
 		skipBtn.addEventListener("click", function() {
 			console.log("Skip!");
-			var time = video.currentTime;
-			var newTime = time + 10;
 			video.currentTime += 10;
 
 			if (video.ended) {
 				video.currentTime = 0;
-				newTime = 0;
 			}
-			console.log("Time before skip: " + time);
-			console.log("Time after skip: " + newTime);
+
+			console.log("Current time is " + video.currentTime);
 		});
 	} // skip
 
@@ -85,12 +86,27 @@ if (video) {
 				document.getElementById("mute").innerHTML = "Unmute";
 			}
 		});
-	};
+	} // mute
 
+	// Update slider info and Volume display as it's used
 	if (slider) {
 		slider.addEventListener("click", function() {
 			video.volume = slider.value / 100;
-			volume.innerHTML = slider.value;
+			volume.innerHTML = slider.value + "%";
 		});
-	}
+	} // slider
+
+	// Enable oldSchool in css file
+	if (vintage) {
+		vintage.addEventListener("click", function() {
+			video.classList.add("oldSchool");
+		});
+	} // vintage
+
+	// Disable oldSchool in css file
+	if (orig) {
+		orig.addEventListener("click", function() {
+			video.classList.remove("oldSchool");
+		});
+	} // orig
 } // video
