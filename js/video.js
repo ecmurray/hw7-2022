@@ -1,5 +1,5 @@
 
-
+// defines variables for various elements on the page
 var video = document.getElementById("player1");
 var playBtn = document.getElementById("play");
 var pauseBtn = document.getElementById("pause");
