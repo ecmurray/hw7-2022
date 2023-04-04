@@ -12,7 +12,8 @@ var volume = document.getElementById("volume");
 var vintage = document.getElementById("vintage");
 var orig = document.getElementById("orig");
 
-
+//checks if video variable is defined
+//sets up an event listener that logs a message to the console and loads the video when the window is loaded
 if (video) {
 	window.addEventListener("load", function() {
 		console.log("Good job opening the window");
@@ -21,7 +22,7 @@ if (video) {
 		video.loop = false;
 	});
 	
-	// Play video and set volume info
+	// when clicked button, event listener logs a message to console, plays video, updates volume display
 	if (playBtn) {
 		playBtn.addEventListener("click", function() {
 			console.log("Play!");
@@ -38,7 +39,7 @@ if (video) {
 		});
 	} // pause 
 	
-	// Slow video by 10% and log new speed
+	// event listener slows video playback speed by 10% and logs new rate to the console
 	if (slowerBtn) {
 		slowerBtn.addEventListener("click", function() {
 			console.log("Slower!");
@@ -49,7 +50,7 @@ if (video) {
 		});
 	} // slower
 	
-	// Accelerate video by 10% and log new speed
+	// event listener accelerates video playback speed by 10% and logs new rate to the console
 	if (fasterBtn) {
 		fasterBtn.addEventListener("click", function() {
 			console.log("Faster!");
@@ -60,7 +61,7 @@ if (video) {
 		});
 	} // faster
 	
-	// Skip ahead 10 seconds. If at end of video, set back to beginning
+	// event listener skips the video ahead 10 seconds and sets it back to beginning if reaches the end
 	if (skipBtn) {
 		skipBtn.addEventListener("click", function() {
 			console.log("Skip!");
@@ -74,7 +75,7 @@ if (video) {
 		});
 	} // skip
 
-	// Mute and unmute, as well as change the button words
+	// event listener mutes and unmutes the video when clicked and updates button text accordingly
 	if (muteBtn) {
 		muteBtn.addEventListener("click", function() {
 			if (video.muted) {
@@ -87,8 +88,8 @@ if (video) {
 			}
 		});
 	} // mute
-
-	// Update slider info and Volume display as it's used
+	
+	// event listener updates the volume of the video as the slider is moved and updates volume display
 	if (slider) {
 		slider.addEventListener("click", function() {
 			video.volume = slider.value / 100;
@@ -96,14 +97,14 @@ if (video) {
 		});
 	} // slider
 
-	// Enable oldSchool in css file
+	// event listener adds CSS class oldSchool from video element, changing the appearance of the video player
 	if (vintage) {
 		vintage.addEventListener("click", function() {
 			video.classList.add("oldSchool");
 		});
 	} // vintage
 
-	// Disable oldSchool in css file
+	// event listener disables CSS class oldSchool from video element, changing the appearance of the video player
 	if (orig) {
 		orig.addEventListener("click", function() {
 			video.classList.remove("oldSchool");
