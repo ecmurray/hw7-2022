@@ -17,8 +17,11 @@ var orig = document.getElementById("orig");
 if (video) {
 	window.addEventListener("load", function() {
 		console.log("Good job opening the window");
+		//intialize vid elements
 		video.load();
+		//turn off autoplay
 		video.autoplay = false;
+		//turn off looping
 		video.loop = false;
 	});
 	
@@ -26,7 +29,9 @@ if (video) {
 	if (playBtn) {
 		playBtn.addEventListener("click", function() {
 			console.log("Play!");
+			//play vid
 			video.play();
+			//update volume info
 			volume.innerHTML = slider.value + "%";
 		});
 	} // play
@@ -35,6 +40,7 @@ if (video) {
 	if (pauseBtn) {
 		pauseBtn.addEventListener("click", function() {
 			console.log("Pause!");
+			//pause vid
 			video.pause();
 		});
 	} // pause 
@@ -46,6 +52,7 @@ if (video) {
 			var currentPlaybackRate = video.playbackRate;
 			var newPlaybackRate = currentPlaybackRate * .9;
 			video.playbackRate = newPlaybackRate;
+			//logs new playback rate
 			console.log("New playback rate is: " + video.playbackRate);
 		});
 	} // slower
@@ -55,6 +62,7 @@ if (video) {
 		fasterBtn.addEventListener("click", function() {
 			console.log("Faster!");
 			var currentPlaybackRate = video.playbackRate;
+			// increase video playback speed by 10%
 			var newPlaybackRate = currentPlaybackRate / .9;
 			video.playbackRate = newPlaybackRate;
 			console.log("New playback rate is: " + video.playbackRate);
@@ -70,7 +78,6 @@ if (video) {
 			if (video.ended) {
 				video.currentTime = 0;
 			}
-
 			console.log("Current time is " + video.currentTime);
 		});
 	} // skip
@@ -78,12 +85,14 @@ if (video) {
 	// event listener mutes and unmutes the video when clicked and updates button text accordingly
 	if (muteBtn) {
 		muteBtn.addEventListener("click", function() {
-			if (video.muted) {
+			if (video.muted) { //user clicks to unmute a muted vid
 				video.muted = false;
+				//update button to "mute" vid again
 				document.getElementById("mute").innerHTML = "Mute";
 			}
-			else {
+			else { //user clicks to mute an unmuted vid
 				video.muted = true;
+				//update button to "unmute" vid again
 				document.getElementById("mute").innerHTML = "Unmute";
 			}
 		});
@@ -92,7 +101,9 @@ if (video) {
 	// event listener updates the volume of the video as the slider is moved and updates volume display
 	if (slider) {
 		slider.addEventListener("click", function() {
+			//volume is percentile
 			video.volume = slider.value / 100;
+			//
 			volume.innerHTML = slider.value + "%";
 		});
 	} // slider
