@@ -8,6 +8,7 @@ var mute_btn = document.querySelector("#mute");
 var slider_btn = document.querySelector("#slider");
 var vintage_btn = document.querySelector("#vintage");
 var orig_btn = document.querySelector("#orig");
+var volume = document.querySelector("#volume");
 
 if (video) {
 	window.addEventListener("load", function() {
@@ -24,7 +25,7 @@ if (video) {
 			//play vid
 			video.play();
 			//update volume info
-			volume.innerHTML = document.getElementById("slider").value + "%";
+			volume.innerHTML = slider_btn.value + "%";
 		});
 	}
 
@@ -82,11 +83,10 @@ if (video) {
 	}
 
 	if (slider_btn) {
-		document.querySelector("#slider").addEventListener("click", function() {
+		slider_btn.addEventListener("click", function() {
 			//volume is percentile
-			video.document.getElementById("volume").value = slider.value / 100;
-			//
-			volume.innerHTML = slider.value + "%";
+			video.volume = slider_btn.value / 100;
+			volume.innerHTML = slider_btn.value + "%";
 		});
 	}
 
